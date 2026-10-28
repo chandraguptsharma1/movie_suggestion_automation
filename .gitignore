@@ -1,0 +1,49 @@
+# Environment variables
+.env
+.youtube_private/
+.env*.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+.pytest_cache/
+
+# Node.js
+node_modules/
+.next/
+.next-build/
+.next-dev/
+out/
+frontend/out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Storage & Heavy Media Files
+backend/storage/*.db
+backend/storage/source_videos/*
+backend/storage/final_videos/*
+backend/storage/audio/*
+backend/storage/thumbnails/*
+backend/storage/bgm/*
+backend/storage/cinematic/*
+backend/storage/tmdb_cache/
+!backend/storage/source_videos/.gitkeep
+!backend/storage/final_videos/.gitkeep
+!backend/storage/audio/.gitkeep
+!backend/storage/thumbnails/.gitkeep
+!backend/storage/bgm/.gitkeep
+!backend/storage/cinematic/.gitkeep
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

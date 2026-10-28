@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: movie_studio_backend
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    environment:
+      - PORT=8000
+      - APP_ENV=production
+      - CORS_ORIGINS=*
+      - TMDB_API_KEY=${TMDB_API_KEY}
+      - TMDB_BEARER_TOKEN=${TMDB_BEARER_TOKEN}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - SARVAM_API_KEY=${SARVAM_API_KEY}
+    volumes:
+      - backend_storage:/app/storage
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: movie_studio_frontend
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8001/api
+      - NEXT_PUBLIC_MEDIA_URL=http://localhost:8001
+    depends_on:
+      - backend
+
+volumes:
+  backend_storage:
